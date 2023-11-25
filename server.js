@@ -4,8 +4,10 @@ let url = require('url');
 function start(route, handle) {
     function onRequest(request, responce) {
         let pathname = url.parse(request.url).pathname;
+        let queryData = url.parse(request.url, true).query;
+
         if (!request.url.includes('favicon.ico')) {
-            route(pathname, handle, responce);
+            route(pathname, handle, responce, queryData.productId);
         }
     }
 
