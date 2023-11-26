@@ -1,5 +1,4 @@
 function route(pathname, handle, responce, productId) {
-    console.log('pathname: ' + pathname);
 
     if (typeof handle[pathname] == 'function') {
         handle[pathname](responce, productId);

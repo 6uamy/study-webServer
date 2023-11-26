@@ -69,6 +69,14 @@ function orderlist(responce) {
     });
 }
 
+function mainCSS(response) {
+    fs.readFile('./css/main.css', function(err, data) {
+        response.writeHead(200, {'Content-Type':'text/css'});
+        response.write(data);
+        response.end();
+    });
+}
+
 let handle = {}; // key-value
 handle['/'] = main;
 handle['/order'] = order;
@@ -77,5 +85,7 @@ handle['/orderlist.html'] = orderlist;
 handle['/img/redRacket.png'] = redRacket;
 handle['/img/blueRacket.png'] = blueRacket;
 handle['/img/blackRacket.png'] = blackRacket;
+
+handle['/css/main.css'] = mainCSS;
 
 exports.handle = handle;
